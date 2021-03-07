@@ -45,8 +45,15 @@ $JBOSS_HOME/bin/jboss-cli.sh --connect --command="module add --name=org.postgres
 echo "-----> install JDBC driver ... "
 $JBOSS_HOME/bin/jboss-cli.sh --connect --command="/subsystem=datasources/jdbc-driver=postgresql:add(driver-name=postgresql,driver-module-name=org.postgresql,driver-xa-datasource-class-name=org.postgresql.xa.PGXADataSource)"
 
-$JBOSS_HOME/bin/jboss-cli.sh --connect --command="/subsystem=datasources:installed-drivers-list"
+$JBOSS_HOME/bin/jboss-cli.sh --connect --command="/subsystem=mail/mail-session=default/server=smtp/:write-attribute(name=username,value=dcaosswp2@gmail.com)"
+$JBOSS_HOME/bin/jboss-cli.sh --connect --command="/subsystem=mail/mail-session=default/server=smtp/:write-attribute(name=password,value=CemDueAdrSebSwp2)"
+$JBOSS_HOME/bin/jboss-cli.sh --connect --command="/subsystem=mail/mail-session=default/server=smtp/:write-attribute(name=ssl,value=true)"
+$JBOSS_HOME/bin/jboss-cli.sh --connect --command="/subsystem=mail/mail-session=default/:write-attribute(name=from,value=dcaosswp2@gmail.com)"
 
+$JBOSS_HOME/bin/jboss-cli.sh --connect --command="/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=mail-smtp/:write-attribute(name=host,value=smtp.gmail.com)"
+$JBOSS_HOME/bin/jboss-cli.sh --connect --command="/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=mail-smtp/:write-attribute(name=port,value=465)"
+
+$JBOSS_HOME/bin/jboss-cli.sh --connect --command="/subsystem=datasources:installed-drivers-list"
 # 4) shutdown
 echo "-----> shutdown WildFly ... "
 $JBOSS_HOME/bin/jboss-cli.sh --connect command=:shutdown
