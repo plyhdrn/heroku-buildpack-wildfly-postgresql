@@ -2,8 +2,8 @@
 # bin/compile <build-dir> <cache-dir> <env-dir>
 
 # versions
-POSTGRESQL_VERSION="42.2.1"
-POSTGRESQL_SHA1="b7f61848ac43ae9fa6e38935bfd75628b7fc9086"
+POSTGRESQL_VERSION="42.2.19"
+POSTGRESQL_SHA1="85cb20fe8151b6d90900d5ae5cfe0ad7c3e8f921"
 
 BP_DIR=$(cd $(dirname $0)/..; pwd) # absolute path
 BIN_DIR=$BP_DIR/bin
@@ -15,7 +15,7 @@ ENV_DIR=$3
 
 cd $BUILD_DIR
 
-JBOSS_HOME=$BUILD_DIR/.jboss/wildfly-10.1.0.Final
+JBOSS_HOME=$BUILD_DIR/.jboss/wildfly-21.0.0.Final
 
 : "${JBOSS_HOME:?You need to install Wildfly first. JBOSS_HOME environment variable not found.}"
 
